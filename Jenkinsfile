@@ -13,7 +13,7 @@ pipeline{
         
          stage("Quality Testing") {
             steps{
-                echo "Quality Test"
+                sh "echo Quality Test"
             }
         }
         
