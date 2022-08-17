@@ -1,7 +1,9 @@
-def imageName = 'josiokoko/movies-store'
-def imageTest = docker.build("${imageName}-test", "-f Dockerfile.test ."
 pipeline{
-    agent any
+    agent none
+    
+    environment {
+        imageName = 'josiokoko/movies-store'
+    }
     
     stages{
         
@@ -14,7 +16,14 @@ pipeline{
         
         
          stage("Quality Testing") {
-            steps{
+             agent {
+                    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+                    dockerfile {
+                        filename 'Dockerfile.test'
+                        label 'm${imageName}-test'
+                    }
+                }
+                            steps{
                 script {
                     imageTest.inside {
                         sh 'npm run lint
