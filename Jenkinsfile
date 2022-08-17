@@ -26,7 +26,7 @@ pipeline{
                             steps{
                 script {
                     imageTest.inside {
-                        sh 'npm run lint
+                        sh 'npm run lint'
                     }
                 }
             }
