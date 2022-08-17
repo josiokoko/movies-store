@@ -1,5 +1,5 @@
 def imageName = 'josiokoko/movies-store'
-def imageTest = docker.build("${imageName}-test", "-f Dockerfile.test
+def imageTest = docker.build("${imageName}-test", "-f Dockerfile.test ."
 pipeline{
     agent any
     
