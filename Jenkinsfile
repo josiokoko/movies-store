@@ -1,3 +1,5 @@
+def imageName = 'josiokoko/movies-store
+def imageTest = docker.build("${imageName}-test", "-f Dockerfile.test
 pipeline{
     agent any
     
@@ -13,7 +15,11 @@ pipeline{
         
          stage("Quality Testing") {
             steps{
-                echo 'Quality Test'
+                script {
+                    imageTest.inside {
+                        sh 'npm run lint
+                    }
+                }
             }
         }
         
