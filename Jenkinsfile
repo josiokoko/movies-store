@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment {
-        imageName = 'josiokoko/movies-store'
+        ImageName='josiokoko/movies-store'
     }
     
     stages{
@@ -20,10 +20,10 @@ pipeline{
                     // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
                     dockerfile {
                         filename 'Dockerfile.test'
-                        label '${imageName}-test'
+                        label '$ImageName-test'
                     }
                 }
-                            steps{
+              steps{
                 script {
                    sh 'npm run lint'
                 }
